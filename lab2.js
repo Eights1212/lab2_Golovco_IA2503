@@ -137,49 +137,90 @@ function reduce(array, callback, initialValue) {
 
 
 
+// TESTS
+
+// printArray
 console.log("=== printArray ===");
 printArray([1, 2, 3]);
+// Element 0: value 1
+// Element 1: value 2
+// Element 2: value 3
 
+
+// printArray1
 console.log("=== printArray1 ===");
 printArray1([1, 2, 3]);
+// 0: 1
+// 1: 2
+// 2: 3
 
+
+// forEach 
 console.log("=== forEach ===");
-forEach([1, 2, 3], function(el, i) {
-    console.log(i + ": " + el);
+forEach([1, 2, 3], function(element, index, array) {
+    console.log('Element: ' + element + ', Index: ' + index);
 });
+// Element: 1, Index: 0
+// Element: 2, Index: 1
+// Element: 3, Index: 2
 
+
+// map 
 console.log("=== map ===");
-const resMap = map([1, 2, 3], function(el) {
-    return el * 2;
+const numbers = [1, 2, 3];
+const squared = map(numbers, function(element) {
+    return element * element;
 });
-console.log(resMap); // [2, 4, 6]
+console.log(squared);
+// [1, 4, 9]
 
+
+// filter 
 console.log("=== filter ===");
-const resFilter = filter([1, 2, 3, 4], function(el) {
-    return el % 2 === 0;
+const numbers2 = [1, 2, 3, 4, 5];
+const evenNumbers = filter(numbers2, function(element) {
+    return element % 2 === 0;
 });
-console.log(resFilter); // [2, 4]
+console.log(evenNumbers);
+// [2, 4]
 
+
+// find (первое четное)
 console.log("=== find ===");
-const resFind = find([1, 2, 3, 4], function(el) {
-    return el > 2;
+const numbers3 = [1, 2, 3, 4, 5];
+const firstEven = find(numbers3, function(element) {
+    return element % 2 === 0;
 });
-console.log(resFind); // 3
+console.log(firstEven);
+// 2
 
+
+// some (есть ли четное)
 console.log("=== some ===");
-const resSome = some([1, 3, 5], function(el) {
-    return el % 2 === 0;
+const numbers4 = [1, 3, 5];
+const hasEven = some(numbers4, function(element) {
+    return element % 2 === 0;
 });
-console.log(resSome); // false
+console.log(hasEven);
+// false
 
+
+// every 
 console.log("=== every ===");
-const resEvery = every([2, 4, 6], function(el) {
-    return el % 2 === 0;
+const numbers5 = [2, 4, 6];
+const allEven = every(numbers5, function(element) {
+    return element % 2 === 0;
 });
-console.log(resEvery); // true
+console.log(allEven);
+// true
 
+
+// reduce (сумма)
 console.log("=== reduce ===");
-const resReduce = reduce([1, 2, 3, 4], function(acc, el) {
-    return acc + el;
+const numbers6 = [1, 2, 3, 4, 5];
+const sum = reduce(numbers6, function(accumulator, element) {
+    return accumulator + element;
 }, 0);
+console.log(sum);
+// 15
 console.log(resReduce); // 10
